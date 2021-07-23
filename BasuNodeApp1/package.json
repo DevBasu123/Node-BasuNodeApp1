@@ -1,0 +1,68 @@
+{
+  "name": "nodejsexpressapp",
+  "version": "1.0.0",
+  "description": "Start building your next Node.js Express app on IBM Cloud.",
+  "private": true,
+  "engines": {
+    "node": "^14.0.0"
+  },
+  "scripts": {
+    "dev": "nodemon server/server.js",
+    "start": "node server/server.js",
+    "check-coverage": "nyc report --check-coverage --lines 100",
+    "lint": "eslint --ignore-path .gitignore .",
+    "fix": "eslint --ignore-path .gitignore . --fix",
+    "test": "nyc mocha test --recursive --exit"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && npm run test && npm run check-coverage"
+    }
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": true,
+    "lines": 100,
+    "statements": 100,
+    "functions": 100,
+    "branches": 100,
+    "exclude": [
+      "test"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  },
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.5",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.4.1",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "express-validator": "^6.12.0",
+    "ibm-cloud-env": "^0",
+    "ibm-cos-sdk": "^1.10.1",
+    "mongoose": "^5.13.3",
+    "multer": "^1.4.2",
+    "pdfkit": "^0.12.1",
+    "stripe": "^8.163.0",
+    "swagger-ui-express": "^4.1.6"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "eslint": "^7.30.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "husky": "^7.0.1",
+    "mocha": "^9.0.2",
+    "nodemon": "^2.0.9",
+    "nyc": "^15.1.0",
+    "sinon": "^11.1.1",
+    "sinon-chai": "^3.7.0",
+    "supertest": "^6.1.3"
+  }
+}

@@ -1,0 +1,13 @@
+---
+applications:
+- instances: 1
+  timeout: 180
+  name: basunodeapp1
+  buildpack: nodejs_buildpack
+  command: npm start
+  disk_quota: 1G
+  memory: 128MB
+  domain: mybluemix.net
+  host: basunodeapp1
+  env:
+    OPTIMIZE_MEMORY: true
